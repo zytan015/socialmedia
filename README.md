@@ -1,5 +1,5 @@
-# MyPage
-MyPage is a social media platform for users to share information and create web content.  
+# Social Media 
+Implementing a social media platform for users to share information and create web content.  
 
 ## Technologies used
 Java, Spring boot, Angular, MySql, Bootstrap 4
