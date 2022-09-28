@@ -1,0 +1,37 @@
+.admin-board-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20%;
+}
+
+button{
+    margin-right: 20px;
+    height: 120px;
+    width: 220px;
+   
+}
+
+.user-btn{
+    background-color: mistyrose;
+    border:none; 
+    border-radius:10px; 
+    box-shadow: 5px 5px 10px rgb(167, 166, 166),
+    -5px -5px 10px rgb(167, 166, 166);
+}
+
+.post-btn{
+    background-color: peachpuff;
+    border:none; 
+    border-radius:10px; 
+    box-shadow: 5px 5px 10px rgb(208, 206, 206),
+    -5px -5px 10px rgb(167, 166, 166);
+}
+
+button:hover {
+    background-color:rgb(205, 200, 200);
+    color: white;
+    transition: 0.7s;
+}
+
+

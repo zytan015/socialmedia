@@ -1,0 +1,11 @@
+
+<div id="post-feed">
+    <pagination-controls previousLabel="Prev" nextLabel="Next" (pageChange)="currentPage = $event"></pagination-controls>
+    <app-displayfeed *ngFor="let p of listOfPost | paginate: { itemsPerPage: count, currentPage: currentPage }"  [postData]="p"></app-displayfeed>
+</div>
+
+<button mat-fab color="warn" id="post-button" (click)="onCreatePostClick()">
+    <mat-icon>add</mat-icon>
+</button>
+
+

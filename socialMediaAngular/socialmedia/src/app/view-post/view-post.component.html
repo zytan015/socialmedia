@@ -1,0 +1,43 @@
+<div class="post-container">
+    <h2 style="margin: auto">Post Details</h2><br>
+    <div>
+      <pagination-controls  style="float: right;" previousLabel="Prev" nextLabel="Next" (pageChange)="currentPage = $event"></pagination-controls>
+    </div>
+    <table class="table">
+      <thead>
+        <tr>
+            <th>S/N</th>
+            <th>Post</th>
+            <th>Description</th>
+            <th>Views</th>
+            <th>Posted By</th>
+            <th>Posted Date</th>
+            <th>Modified By</th>
+            <th>Modified Date</th>
+        </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let p of listOfPost | paginate: { itemsPerPage: count, currentPage: currentPage }  ;index as i ">
+            <td>{{i+1}}</td>
+            <td *ngIf="p.dbFile?.fileType; else otherPost">
+                <img *ngIf="p.dbFile?.fileType !== 'video/mp4'" style="width: 300px" src="data:image/jpeg;base64, {{p.dbFile.data}}" alt="Not found">
+                <video *ngIf="p.dbFile?.fileType === 'video/mp4'" style="width: 300px" src="data:video/mp4;base64, {{p.dbFile.data}}" controls></video>
+            </td>
+            <ng-template #otherPost>
+              <td width="20%"><a href="{{p.link}}" target="_blank">{{p.link}}</a></td>
+            </ng-template>
+            <td>{{p.description}}</td>
+            <td>{{p.views}}</td>
+            <td>{{p.createdBy}}</td>
+            <td>{{p.creationDate |  date:'dd/MM/yyyy'}}</td>
+            <td>{{p.lastModifiedBy}}</td>
+            <td>{{p.lastModifiedDate |  date:'dd/MM/yyyy'}}</td>
+            <td>
+                <button mat-raised-button color="warn" (click)="openDialog('Delete', p)">Delete</button>
+                <button mat-raised-button color="primary" style="margin-left: 20px;" (click)="openDialog('Update', p)"> Edit</button>
+            </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

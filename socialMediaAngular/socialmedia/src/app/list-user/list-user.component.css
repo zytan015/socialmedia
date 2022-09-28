@@ -1,0 +1,17 @@
+.user-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+}
+
+table {
+  width: 100%;
+}
+
+th, td {
+  text-align: center;
+  padding: 10px;
+}
+
+tr:nth-child(even) {background-color: #f2f2f2;}
+  

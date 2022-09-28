@@ -1,0 +1,79 @@
+<div id="authenticator">
+    <mat-card id="authenticator-content">
+        <mat-card-header>
+            <mat-card-title>
+                {{getStateText()}}
+            </mat-card-title>
+        </mat-card-header>
+        <div *ngIf="isLogin()">
+            <div>
+                <input matInput #loginEmail placeholder="Email" [formControl]="email" required>
+                <span *ngIf="email.touched">
+                    <span *ngIf="email.getError('required')!=null" class="errorMsg">Email is required</span>
+                </span>
+                <input #loginPwd placeholder="Password" type="password" [formControl]="pwd" required>
+                <span *ngIf="pwd.touched">
+                    <span *ngIf="pwd.getError('required')!=null" class="errorMsg">Password is required</span>
+                </span>
+                <div><button mat-flat-button color="warn" (click)="onLogin(loginEmail, loginPwd)">login</button></div>
+                <div class="alert alert-danger" *ngIf="invalidLogin">
+                    Login failed! Try Again!
+                </div>
+            </div>
+        </div>
+        <div *ngIf="isRegister()">
+            <form >
+                <input #registerUsername placeholder="Username" [formControl]="uname" required>
+                <span *ngIf="uname.touched">
+                    <span *ngIf="uname.getError('required')!=null" class="errorMsg">Name is required</span>
+                </span>
+                <input #registerEmail placeholder="Email" [formControl]="email" required>
+                <span *ngIf="email.touched">
+                    <span *ngIf="email.getError('required')!=null" class="errorMsg">Email is required</span>
+                </span>
+                <input #registerPwd placeholder="Password" type="password" [formControl]="pwd" required>
+                <span *ngIf="pwd.touched">
+                    <span *ngIf="pwd.getError('required')!=null" class="errorMsg">Password is required</span>
+                </span>
+                <input #registerCfmPwd placeholder="Confirm password" type="password" [formControl]="cfmPwd" required>
+                <span *ngIf="cfmPwd.touched">
+                    <span *ngIf="cfmPwd.getError('required')!=null" class="errorMsg">Password is required</span>
+                </span>
+            </form>
+            <button mat-flat-button color="warn" 
+                (click)="register(registerUsername, registerEmail, registerPwd, registerCfmPwd)">Register</button>
+                <div class="alert alert-danger" *ngIf="invalidResgitration">
+                    Signup failed! Try Again!
+                </div>
+                <div class="alert alert-danger" *ngIf="pwdMismatch">
+                    Password Mismatch. Please give the correct password.
+                </div>
+        </div>
+        <div *ngIf="isRestPassword()">
+            <div>
+                <input #resetPwdToken placeholder="Reset Password Token" [formControl]="token" required>
+                <span *ngIf="token.touched">
+                    <span *ngIf="token.getError('required')!=null" class="errorMsg">Token is required</span>
+                </span>
+                <input #resetPwd placeholder="New Password" type="password" [formControl]="pwd" required>
+                <span *ngIf="pwd.touched">
+                    <span *ngIf="pwd.getError('required')!=null" class="errorMsg">New password is required</span>
+                </span>
+                <button mat-flat-button color="warn" (click)="onResetPassword(resetPwdToken, resetPwd)">Reset</button>
+            </div>
+        </div>
+        <div *ngIf="isForgotPwd()">
+            <input #resetEmail placeholder="Email" [formControl]="email" required>
+            <span *ngIf="email.touched">
+                <span *ngIf="email.getError('required')!=null" class="errorMsg">Email is required</span>
+            </span>
+            <button mat-flat-button color="warn" (click)="onReset(resetEmail)">Submit</button>
+        </div>
+        <mat-card-actions align="end">
+            <button mat-flat-button (click)="forgotPwdBtn()">Forgot password</button>
+            <button mat-flat-button (click)="resetPwdBtn()">Reset Password</button>
+            <button mat-flat-button (click)="createAccBtn()">Create an Account</button>
+            <button mat-flat-button (click)="loginBtn()">Login</button>
+        </mat-card-actions>
+    </mat-card>
+</div>

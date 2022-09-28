@@ -1,0 +1,24 @@
+.action-item {
+    margin-left: 12px;
+    cursor: pointer;
+    vertical-align: middle;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased;
+    display: inline;
+  }
+
+mat-card{
+    margin-top: 10px;
+}
+
+mat-card-content{
+    display: flex;
+    justify-content: space-between;
+}

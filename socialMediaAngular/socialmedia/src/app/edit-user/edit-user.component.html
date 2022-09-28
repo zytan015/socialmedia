@@ -1,0 +1,16 @@
+<div class="col-md-6 user-container">
+    <h2 class="text-center">Edit User</h2>
+    <form [formGroup]="editForm">
+      <div class="form-group">
+        <label for="username">UserName:</label>
+        <input type="text" formControlName="username" placeholder="username" name="username" class="form-control" id="username" readonly="true">
+      </div>
+  
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input formControlName="email" placeholder="Email" name="email" class="form-control" id="email">
+      </div>
+      <button class="btn btn-success">Update</button>
+    </form>
+  </div>
+  

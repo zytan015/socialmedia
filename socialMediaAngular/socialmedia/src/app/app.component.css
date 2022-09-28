@@ -1,0 +1,32 @@
+#nav{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 50px;
+    width: 100%;
+    background-color: rgb(176, 169, 169);
+    color: white;
+    z-index: 10
+}
+
+
+#nav-content{
+    display: grid;
+    height: 100%;
+    grid-template-columns: 1fr 1fr;
+}
+
+#nav-left, #nav-right{
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 0 10px;
+}
+
+#nav-right{
+    justify-content: flex-end;
+}
+
+.nav-items{
+    cursor: pointer;
+}

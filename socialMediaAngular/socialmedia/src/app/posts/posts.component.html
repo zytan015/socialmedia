@@ -1,0 +1,29 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>Create Post</mat-card-title>
+    </mat-card-header>
+    <div>
+        <textarea #commentInput placeholder="Enter your caption here..."  style="width: 350px; font-size: 15px;"></textarea>
+    </div>
+    <div id="post-review">
+        <img id="post-preview-image"[src]="url" *ngIf="format==='image' && url"> <br/>
+        <video id="post-preview-video" [src]="url" *ngIf="format==='video' && url" controls></video> <br/>
+    </div>
+    <!-- insert photo icon -->
+    <mat-form-field appearance="fill" *ngIf="isActivate">
+        <input matInput #linkInput placeholder="Enter URL" [(ngModel)]="link"> 
+    </mat-form-field>
+    <span *ngIf="!isActivate">{{link}}</span>
+    <mat-card-actions >
+        <button mat-button color="warn">
+            <label>
+                <input type="file" (change)="selectFile($event)" id="photo-upload"/>
+                <mat-icon>file_upload</mat-icon>
+            </label>
+            <label style="margin-left: 30px">
+                <mat-icon (click)="activateInputLink()">link</mat-icon>
+            </label>
+        </button>
+        <button id="post-btn" (click)="upload(commentInput)" mat-flat-button color="warn">Post</button>
+    </mat-card-actions>
+</mat-card>

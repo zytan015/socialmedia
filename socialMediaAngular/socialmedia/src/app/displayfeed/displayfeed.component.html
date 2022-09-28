@@ -1,0 +1,24 @@
+<mat-card>
+    <p style="font-size: 12px; color: grey; float: right;">{{postData?.creationDate |  date:'dd/MM/yyyy'}}</p>
+    <div *ngIf="postData?.dbFile?.fileType !== null;else otherPost">
+        <img mat-card-image *ngIf="postData?.dbFile.fileType !== 'video/mp4' " src="data:image/jpeg;base64, {{postData?.dbFile.data}}" alt="Not found">
+        <video *ngIf="postData?.dbFile.fileType === 'video/mp4'" style="width: 485px" src="data:video/mp4;base64, {{postData?.dbFile.data}}" controls></video>
+    </div>
+    <ng-template #otherPost>
+        <a  style="text-align: center; font-size: large;" href="{{postData?.link}}" target="_blank">{{postData?.link}}</a>
+    </ng-template>
+
+    
+    <mat-card-content>
+        <h2 id="post-caption" >{{postData?.description}}</h2>
+        <p style="font-size: 12px; color: grey; float: right;">{{postData?.createdBy}}</p>
+    </mat-card-content>
+
+    <mat-card-actions>
+        <mat-icon  *ngIf="postData?.createdBy === getUser" class="action-item" color="warn" (click)="openDialog('Update', postData)">edit</mat-icon>
+        <mat-icon *ngIf="postData?.createdBy === getUser" class="action-item" color="warn" (click)="onDeleteClick(postData?.pid)">delete</mat-icon>
+        <mat-icon class="action-item" color="warn" (click)="onViewClick(postData?.pid, count)">visibility</mat-icon> {{postData?.views}}
+    </mat-card-actions>
+</mat-card>
+
+
